@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints'
 
 export const Container = styled.div`
     padding: 1.5rem 7.68rem;
@@ -78,5 +79,9 @@ export const InputSearch = styled.div `
         border: none;
         
         color: ${({ theme }) => theme.COLORS.LIGHT100};
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.LG}) {
+        padding: 0.75rem 1rem;
     }
 `
