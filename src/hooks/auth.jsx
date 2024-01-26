@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext({});
 
@@ -21,6 +22,10 @@ function AuthProvider({ children }){
         setData({})
     }
 
+    function createAccount({name, email, password}){
+        return true
+    }
+
     useEffect(() => {
         const user = localStorage.getItem("@foodexplorer:user")
 
@@ -30,7 +35,7 @@ function AuthProvider({ children }){
     }, [])
 
     return (
-        <AuthContext.Provider value={{ signIn, signOut, user: data }}>
+        <AuthContext.Provider value={{ signIn, signOut, createAccount, user: data }}>
             {children}
         </AuthContext.Provider>
     )
