@@ -1,11 +1,11 @@
-import { useAuth } from "../../hooks/auth"
+import { Container } from "./styles"
+
+import { Header } from "../../components/Header"
 
 export function Home(){
-    const { signOut } = useAuth()
-
     return(
-        <>
-            <button type="button" onClick={signOut}>Sair</button>
-        </>
+        <Container>
+            <Header />
+        </Container>
     )
 }
