@@ -10,7 +10,7 @@ function AuthProvider({ children }){
         const user = {
             email,
             password,
-            role: 'admin'
+            role: 'customer'
         }
 
         localStorage.setItem("@foodexplorer:user", JSON.stringify(user))

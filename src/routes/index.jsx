@@ -1,8 +1,9 @@
 import { useAuth } from '../hooks/auth'
 import { BrowserRouter } from 'react-router-dom'
 
-import { AdminRoutes } from './admin.routes'
 import { AuthRoutes } from './auth.routes'
+import { AdminRoutes } from './admin.routes'
+import { CustomerRoutes } from './customer.routes'
 
 export function Routes(){
     const { user } = useAuth()
@@ -11,6 +12,8 @@ export function Routes(){
         switch (user.role) {
             case 'admin':
                 return <AdminRoutes/>
+            case 'customer':
+                return <CustomerRoutes />
             default:
                 return <AuthRoutes/>          
         }
