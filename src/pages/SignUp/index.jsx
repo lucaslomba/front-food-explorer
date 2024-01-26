@@ -1,6 +1,7 @@
 import FoodExplorerImg from "../../assets/logo.svg"
 import { Container, Form } from "./styles";
 
+import { Link } from 'react-router-dom'
 import { Input } from "../../components/Input"
 import { Button } from "../../components/Button"
 
@@ -38,7 +39,7 @@ export function SignUp(){
                     />
 
                     <Button title="Criar conta"/>
-                    <a href="">Já tenho uma conta</a>
+                    <Link to="/">Já tenho uma conta</Link>
                 </Form>
             </main>
         </Container>
