@@ -1,8 +1,9 @@
 import { useAuth } from "../../hooks/auth";
 
-import { FiLogOut, FiSearch } from 'react-icons/fi'
+import { FiLogOut, FiSearch, FiMenu } from 'react-icons/fi'
 import { PiReceipt } from "react-icons/pi";
-import { ButtonCart, Container, ButtonLogOut, InputSearch } from "./styles";
+
+import { ButtonCart, Container, ButtonLogOut, InputSearch, Menu, ButtonCartMobile } from "./styles";
 
 import FoodExplorerImg from "../../assets/logo.svg"
 import FoodExplorerAdminImg from "../../assets/logoAdmin.svg"
@@ -12,6 +13,10 @@ export function Header(){
 
     return(
         <Container>
+            <Menu>
+                <FiMenu />
+            </Menu>
+
             <img 
                 src={user.role === "admin" ? FoodExplorerAdminImg : FoodExplorerImg}
                 alt="Logo do Food Explorer, uma caixa hexagonal azul com a escrita food explorer ao lado"
@@ -29,6 +34,11 @@ export function Header(){
                 :
                 <ButtonCart type="button"><PiReceipt /> Pedidos (0)</ButtonCart>
             }
+
+            <ButtonCartMobile>
+                <PiReceipt />
+                <span>5</span>
+            </ButtonCartMobile>
 
             <ButtonLogOut type="button" onClick={signOut}><FiLogOut /></ButtonLogOut>
         </Container>

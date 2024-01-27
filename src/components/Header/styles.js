@@ -19,6 +19,10 @@ export const Container = styled.div`
             height: 2.43rem;
         }
     }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        padding: 4rem 1.75rem 1.75rem;
+    }
 `
 
 export const ButtonCart = styled.button`
@@ -41,6 +45,10 @@ export const ButtonCart = styled.button`
     :hover {
         background-color: ${({ theme }) => theme.COLORS.TOMATO100};
     }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        display: none;
+    }
 `
 
 export const ButtonLogOut = styled.button`
@@ -54,6 +62,10 @@ export const ButtonLogOut = styled.button`
     > svg {
         font-size: 1.37rem;
         color: ${({ theme }) => theme.COLORS.LIGHT100};
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        display: none;
     }
 `
 
@@ -83,5 +95,54 @@ export const InputSearch = styled.div `
 
     @media (max-width: ${DEVICE_BREAKPOINTS.LG}) {
         padding: 0.75rem 1rem;
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        display: none;
+    }
+`
+
+export const Menu = styled.button`
+    background: none;
+    border: none;
+    display: none;
+
+    > svg {
+        font-size: 2.5rem;
+        color: ${({ theme }) => theme.COLORS.LIGHT100};
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        display: block;
+    }
+`;
+
+export const ButtonCartMobile = styled.button`
+    background: none;
+    border: none;
+    display: none;
+
+    position: relative;
+
+    > svg {
+        font-size: 2.5rem;
+        color: ${({ theme }) => theme.COLORS.LIGHT100};
+    }
+
+    > span {
+        height: 20px;
+        width: 20px;
+
+        position: absolute;
+        top: -.5rem;
+        right: -.5rem;
+
+        background-color: ${({ theme }) => theme.COLORS.TOMATO200};
+        color: ${({ theme }) => theme.COLORS.LIGHT100};
+        border-radius: 50%;
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        display: block;
     }
 `
