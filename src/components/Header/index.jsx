@@ -8,12 +8,12 @@ import { ButtonCart, Container, ButtonLogOut, InputSearch, Menu, ButtonCartMobil
 import FoodExplorerImg from "../../assets/logo.svg"
 import FoodExplorerAdminImg from "../../assets/logoAdmin.svg"
 
-export function Header(){
+export function Header({ onOpenMenu }){
     const { signOut, user } = useAuth()
 
     return(
         <Container>
-            <Menu>
+            <Menu onClick={onOpenMenu}>
                 <FiMenu />
             </Menu>
 
