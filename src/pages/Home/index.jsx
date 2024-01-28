@@ -1,10 +1,12 @@
 import { useState } from "react";
 
-import { Container, Content } from "./styles"
+import { Container, Content, Highlight } from "./styles"
 
 import { Header } from "../../components/Header"
 import { SideMenu } from "../../components/SideMenu"
 import { Footer } from "../../components/Footer";
+
+import Background from "../../assets/background.png"
 
 export function Home(){
     const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -18,7 +20,13 @@ export function Home(){
             />
 
             <Content>
-                Conteudo
+                <Highlight>
+                    <img src={Background} alt="" />
+                    <div>
+                        <h1>Sabores inigualáveis</h1>
+                        <span>Sinta o cuidado do preparo com ingredientes selecionados</span>
+                    </div>
+                </Highlight>
             </Content>
 
             <Footer />
