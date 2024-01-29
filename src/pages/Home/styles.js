@@ -43,6 +43,15 @@ export const Highlight = styled.div`
         width: 50%;
         bottom: 0;
         left: -2rem;
+
+        
+        @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+            max-width: 60%;
+        }
+
+        @media (min-width: ${DEVICE_BREAKPOINTS.XL}) {
+            max-width: 40%;
+        }
     }
 
     > div {
@@ -53,10 +62,19 @@ export const Highlight = styled.div`
     
         padding-right: 8px;
 
+        @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+            width: 60%;
+        }
+
         > h1 {
             font-size: 1.5rem;
             color: ${({ theme }) => theme.COLORS.LIGHT300};
             font-weight: 600;
+
+            @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+                font-size: 2.5rem;
+                font-weight: 400;
+            }
         }
     
         > span {
@@ -64,5 +82,10 @@ export const Highlight = styled.div`
             color: ${({ theme }) => theme.COLORS.LIGHT300};
             font-weight: 400;
         }
+
+    }
+
+    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+        margin-top: 10rem;
     }
 `
