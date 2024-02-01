@@ -25,6 +25,8 @@ export const Content = styled.div`
 `
 
 export const Highlight = styled.div`
+    width: 100vw;
+
     height: 10rem;
     display: flex;
     justify-content: end;
@@ -37,6 +39,7 @@ export const Highlight = styled.div`
     position: relative;
 
     margin-top: 2.1rem;
+    margin-bottom: 3.8rem;
 
     > img {
         position: absolute;
