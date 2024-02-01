@@ -25,7 +25,7 @@ export const Content = styled.div`
 `
 
 export const Highlight = styled.div`
-    width: 100vw;
+    width: calc(100vw - 15.36rem);
 
     height: 10rem;
     display: flex;

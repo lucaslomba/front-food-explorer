@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints'
 
 export const Container = styled.div`
+    width: 100vw;
+
     padding: 1.5rem 7.68rem;
 
     display: flex;

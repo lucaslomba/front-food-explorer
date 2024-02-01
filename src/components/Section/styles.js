@@ -16,4 +16,6 @@ export const Container = styled.section`
             font-size: 1.5rem;
         }
     }
+
+    width: calc(100vw - 15.36rem);
 `

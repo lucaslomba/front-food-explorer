@@ -4,6 +4,7 @@ import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
 import { Container, Content, Highlight } from "./styles"
 
+import { Card } from "../../components/Card"
 import { Header } from "../../components/Header"
 import { Footer } from "../../components/Footer";
 import { Section } from "../../components/Section";
@@ -12,16 +13,7 @@ import { SideMenu } from "../../components/SideMenu"
 import Background from "../../assets/background.png"
 
 export function Home(){
-    const [sliderRef, instanceRef] = useKeenSlider(
-        {
-            slideChanged() {
-            console.log('slide changed')
-            },
-        },
-        [
-            // add plugins here
-        ]
-    )
+    const [sliderRef] = useKeenSlider()
 
     const [menuIsOpen, setMenuIsOpen] = useState(false);
 
@@ -43,10 +35,10 @@ export function Home(){
                 </Highlight>
 
                 <Section title="Refeições">
-                <div ref={sliderRef} className="keen-slider">
-                    <div className="keen-slider__slide">1</div>
-                    <div className="keen-slider__slide">2</div>
-                </div>
+                    <div ref={sliderRef} className="keen-slider">
+                        <Card className="keen-slider__slide"/>
+                        <Card className="keen-slider__slide"/>
+                    </div>
                 </Section>
 
                 <Section title="Sobremesas">
