@@ -27,6 +27,10 @@ export const Content = styled.div`
 export const Highlight = styled.div`
     width: calc(100vw - 15.36rem);
 
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        width: calc(100vw - 6rem);
+    }
+
     height: 10rem;
     display: flex;
     justify-content: end;

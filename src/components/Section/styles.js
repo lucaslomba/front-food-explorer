@@ -18,4 +18,8 @@ export const Container = styled.section`
     }
 
     width: calc(100vw - 15.36rem);
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        width: calc(100vw - 6rem);
+    }
 `
