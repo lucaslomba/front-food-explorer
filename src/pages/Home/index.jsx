@@ -58,11 +58,29 @@ export function Home(){
                 </Section>
 
                 <Section title="Sobremesas">
-
+                    <div ref={sliderRef} className="keen-slider">
+                        <Card className="keen-slider__slide"/>
+                        <Card className="keen-slider__slide"/>
+                        <Card className="keen-slider__slide"/>
+                        <Card className="keen-slider__slide"/>
+                        <Card className="keen-slider__slide"/>
+                        <Card className="keen-slider__slide"/>
+                        <Card className="keen-slider__slide"/>
+                        <Card className="keen-slider__slide"/>
+                    </div>
                 </Section>
 
                 <Section title="Bebidas">
-
+                    <div ref={sliderRef} className="keen-slider">
+                        <Card className="keen-slider__slide"/>
+                        <Card className="keen-slider__slide"/>
+                        <Card className="keen-slider__slide"/>
+                        <Card className="keen-slider__slide"/>
+                        <Card className="keen-slider__slide"/>
+                        <Card className="keen-slider__slide"/>
+                        <Card className="keen-slider__slide"/>
+                        <Card className="keen-slider__slide"/>
+                    </div>
                 </Section>
             </Content>
 
