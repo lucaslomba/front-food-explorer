@@ -1,12 +1,16 @@
+import { useState } from "react";
+import { useAuth } from "../../hooks/auth";
+
 import { Container, Footer } from "./styles";
 import { FiMinus, FiPlus, FiHeart } from "react-icons/fi";
+import { PiPencilSimple } from "react-icons/pi";
 
 import {Button } from "../Button"
 
 import Image from "../../assets/camarao.png"
-import { useState } from "react";
 
 export function Card({...rest}){
+    const { user } = useAuth()
     const [amount, setAmount] = useState(1)
 
     function handleAddItem(){
@@ -23,7 +27,12 @@ export function Card({...rest}){
 
     return (
         <Container {...rest}>
-            <FiHeart />
+            {
+                user.role === "admin" ?
+                <PiPencilSimple />
+                :
+                <FiHeart />
+            }
             <img src={Image} alt="" />
 
             <h1>Spaguetti Gambe&nbsp;&nbsp;></h1>
@@ -31,14 +40,18 @@ export function Card({...rest}){
 
             <h2>R$ 79,97</h2>
 
-            <Footer>
-                <div>
-                    <FiMinus onClick={handleRemoveItem}/>
-                    <span>0{amount}</span>
-                    <FiPlus onClick={handleAddItem}/>
-                </div>
-                <Button title="incluir"/>
-            </Footer>
+            {
+                user.role === "customer" ? (
+                    <Footer>
+                        <div>
+                            <FiMinus onClick={handleRemoveItem}/>
+                            <span>0{amount}</span>
+                            <FiPlus onClick={handleAddItem}/>
+                        </div>
+                        <Button title="incluir"/>
+                    </Footer>
+                ) : null
+            }
         </Container>
     )
 }
