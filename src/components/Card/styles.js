@@ -12,6 +12,16 @@ export const Container = styled.div`
     align-items: center;
 
     gap: 1rem;
+
+    position: relative;
+
+    > svg {
+        position: absolute;
+        top: 1rem;
+        right: 1.1rem;
+
+        font-size: 1.5rem;
+    }
     
     > img {
         width: 176px;

@@ -1,5 +1,5 @@
 import { Container, Footer } from "./styles";
-import { FiMinus, FiPlus, FiArrowRight } from "react-icons/fi";
+import { FiMinus, FiPlus, FiHeart } from "react-icons/fi";
 
 import {Button } from "../Button"
 
@@ -23,6 +23,7 @@ export function Card({...rest}){
 
     return (
         <Container {...rest}>
+            <FiHeart />
             <img src={Image} alt="" />
 
             <h1>Spaguetti Gambe&nbsp;&nbsp;></h1>
