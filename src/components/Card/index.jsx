@@ -4,8 +4,23 @@ import { FiMinus, FiPlus, FiArrowRight } from "react-icons/fi";
 import {Button } from "../Button"
 
 import Image from "../../assets/camarao.png"
+import { useState } from "react";
 
 export function Card({...rest}){
+    const [amount, setAmount] = useState(1)
+
+    function handleAddItem(){
+        if(amount < 9){
+            setAmount((state) => state + 1)
+        }
+    }
+
+    function handleRemoveItem(){
+        if(amount > 1){
+            setAmount((state) => state - 1)
+        }
+    }
+
     return (
         <Container {...rest}>
             <img src={Image} alt="" />
@@ -17,9 +32,9 @@ export function Card({...rest}){
 
             <Footer>
                 <div>
-                    <FiMinus />
-                    <span>01</span>
-                    <FiPlus />
+                    <FiMinus onClick={handleRemoveItem}/>
+                    <span>0{amount}</span>
+                    <FiPlus onClick={handleAddItem}/>
                 </div>
                 <Button title="incluir"/>
             </Footer>
