@@ -13,7 +13,17 @@ import { SideMenu } from "../../components/SideMenu"
 import Background from "../../assets/background.png"
 
 export function Home(){
-    const [sliderRef] = useKeenSlider()
+    const [sliderRef] = useKeenSlider({
+        breakpoints: {
+            "(min-width: 400px)": {
+            slides: { perView: 1.6, spacing: 16 },
+            },
+            "(min-width: 1000px)": {
+            slides: { perView: 3.5, spacing: 27 },
+            },
+        },
+        slides: { perView: 1 },
+    })
 
     const [menuIsOpen, setMenuIsOpen] = useState(false);
 
@@ -36,6 +46,12 @@ export function Home(){
 
                 <Section title="Refeições">
                     <div ref={sliderRef} className="keen-slider">
+                        <Card className="keen-slider__slide"/>
+                        <Card className="keen-slider__slide"/>
+                        <Card className="keen-slider__slide"/>
+                        <Card className="keen-slider__slide"/>
+                        <Card className="keen-slider__slide"/>
+                        <Card className="keen-slider__slide"/>
                         <Card className="keen-slider__slide"/>
                         <Card className="keen-slider__slide"/>
                     </div>
