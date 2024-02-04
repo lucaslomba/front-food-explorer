@@ -35,7 +35,7 @@ export function Card({...rest}){
             }
             <img src={Image} alt="" />
 
-            <h1>Spaguetti Gambe&nbsp;&nbsp;></h1>
+            <h1>Spaguetti Gambe&nbsp;&nbsp;&gt;</h1>
             <span>Massa fresca com camarões e pesto.</span>
 
             <h2>R$ 79,97</h2>
