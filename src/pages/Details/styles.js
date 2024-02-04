@@ -31,6 +31,10 @@ export const Content = styled.div`
 
         display: flex;
         align-items: center;
+
+        @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+            font-size: 2rem;
+        }
     }
 `
 
@@ -39,6 +43,15 @@ export const Dish = styled.div`
     gap: 3rem;
 
     margin-top: 2.6rem;
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        flex-direction: column;
+        margin-top: 1.33rem;
+
+        > img {
+            max-width: 100%;
+        }
+    }
 `
 
 export const DashDetails = styled.div`
@@ -46,22 +59,45 @@ export const DashDetails = styled.div`
     flex-direction: column;
     justify-content: center;
 
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        align-items: center;
+    }
+
     gap: 1.5rem;
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        gap: 2rem;
+    }
 
     > h2 {
         font-size: 2.5rem;
         color: ${({ theme }) => theme.COLORS.LIGHT300};
+
+        @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+            font-size: 2.25rem;
+            text-align: center;
+        }
     }
 
     > span {
         font-size: 1.5rem;
         color: ${({ theme }) => theme.COLORS.LIGHT300};
+
+        @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+            font-size: 1.33rem;
+            text-align: center;
+        }
     }
 `
 
 export const DashIngredients = styled.div`
     display: flex;
     gap: 0.75rem;
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 
     > span {
         background-color: ${({ theme }) => theme.COLORS.DARK1000};
@@ -72,6 +108,10 @@ export const DashIngredients = styled.div`
 
         font-size: .875rem;
         line-height: 1.5rem;
+
+        @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+            text-align: center;
+        }
     }
 `
 
@@ -84,9 +124,10 @@ export const DashFooter = styled.div`
     width: 100%;
 
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-        flex-direction: column;
+        margin-top: 2rem;
+        justify-content: center;
     }
-    
+
     > div {
         display: flex;
         align-items: center;  
