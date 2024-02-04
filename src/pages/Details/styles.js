@@ -54,7 +54,7 @@ export const Dish = styled.div`
     }
 `
 
-export const DashDetails = styled.div`
+export const DishDetails = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -90,7 +90,7 @@ export const DashDetails = styled.div`
     }
 `
 
-export const DashIngredients = styled.div`
+export const DishIngredients = styled.div`
     display: flex;
     gap: 0.75rem;
 
@@ -115,7 +115,7 @@ export const DashIngredients = styled.div`
     }
 `
 
-export const DashFooter = styled.div`
+export const DishFooter = styled.div`
     display: flex;
     align-items: center;    
 

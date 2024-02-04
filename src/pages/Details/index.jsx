@@ -5,7 +5,7 @@ import { useAuth } from "../../hooks/auth";
 import Image from "../../assets/camarao.png"
 import { PiCaretLeft } from "react-icons/pi";
 import { FiMinus, FiPlus } from "react-icons/fi";
-import { Container, Content, Dish, DashDetails, DashIngredients, DashFooter } from "./styles";
+import { Container, Content, Dish, DishDetails, DishIngredients, DishFooter } from "./styles";
 
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
@@ -43,18 +43,18 @@ export function Details(){
                 <Dish>
                     <img src={Image} alt="" />
                     
-                    <DashDetails>
+                    <DishDetails>
                         <h2>Spaguetti Gambe</h2>
                         <span>Massa fresca com camarões e pesto.</span>
 
-                        <DashIngredients>
+                        <DishIngredients>
                             <span>Camarão</span>
                             <span>Macarrão</span>
                             <span>Molho pesto</span>
                             <span>Manjericão</span>
-                        </DashIngredients>
+                        </DishIngredients>
 
-                        <DashFooter>
+                        <DishFooter>
                         {
                             user.role === "customer" ? (
                                 <>
@@ -70,8 +70,8 @@ export function Details(){
                                 <button type="button">Editar prato</button> 
                             )
                         }
-                        </DashFooter>
-                    </DashDetails>
+                        </DishFooter>
+                    </DishDetails>
                 </Dish>
             </Content>
 
