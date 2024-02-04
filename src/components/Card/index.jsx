@@ -35,7 +35,7 @@ export function Card({...rest}){
             }
             <img src={Image} alt="" />
 
-            <LinkTitle to="/details">Spaguetti Gambe&nbsp;&nbsp;&gt;</LinkTitle>
+            <LinkTitle to="/details/1">Spaguetti Gambe&nbsp;&nbsp;&gt;</LinkTitle>
             <span>Massa fresca com camarões e pesto.</span>
 
             <h2>R$ 79,97</h2>
