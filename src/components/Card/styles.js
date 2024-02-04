@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
     background-color: ${({ theme }) => theme.COLORS.DARK200};
@@ -35,18 +36,6 @@ export const Container = styled.div`
         }
     }
 
-    > h1 {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: ${({ theme }) => theme.COLORS.LIGHT300};
-
-        cursor: pointer;
-
-        @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-            font-size: 1.16rem;
-        }
-    }
-
     > span {
         font-size: 0.87rem;
         font-weight: 400;
@@ -69,6 +58,18 @@ export const Container = styled.div`
         @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
             font-size: 1.5rem;
         }
+    }
+`
+
+export const LinkTitle = styled(Link)`
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: ${({ theme }) => theme.COLORS.LIGHT300};
+
+    cursor: pointer;
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        font-size: 1.16rem;
     }
 `
 

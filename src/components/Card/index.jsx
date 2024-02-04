@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../../hooks/auth";
 
-import { Container, Footer } from "./styles";
+import { Container, Footer, LinkTitle } from "./styles";
 import { FiMinus, FiPlus, FiHeart } from "react-icons/fi";
 import { PiPencilSimple } from "react-icons/pi";
 
@@ -35,7 +35,7 @@ export function Card({...rest}){
             }
             <img src={Image} alt="" />
 
-            <h1>Spaguetti Gambe&nbsp;&nbsp;&gt;</h1>
+            <LinkTitle to="/details">Spaguetti Gambe&nbsp;&nbsp;&gt;</LinkTitle>
             <span>Massa fresca com camarões e pesto.</span>
 
             <h2>R$ 79,97</h2>
