@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/auth";
 
 import Image from "../../assets/camarao.png"
 import { PiCaretLeft } from "react-icons/pi";
@@ -9,9 +10,9 @@ import { Container, Content, Dish, DashDetails, DashIngredients, DashFooter } fr
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { SideMenu } from "../../components/SideMenu";
-import { Button } from "../../components/Button";
 
 export function Details(){
+    const { user } = useAuth()
     const [menuIsOpen, setMenuIsOpen] = useState(false);
 
     const [amount, setAmount] = useState(1)
@@ -54,12 +55,21 @@ export function Details(){
                         </DashIngredients>
 
                         <DashFooter>
-                            <div>
-                                <FiMinus onClick={handleRemoveItem}/>
-                                <span>0{amount}</span>
-                                <FiPlus onClick={handleAddItem}/>
-                            </div>
-                            <button type="button">incluir ∙ R$ 25,00</button>
+                        {
+                            user.role === "customer" ? (
+                                <>
+                                    <div>
+                                        <FiMinus onClick={handleRemoveItem}/>
+                                        <span>0{amount}</span>
+                                        <FiPlus onClick={handleAddItem}/>
+                                    </div>
+                                    <button type="button">incluir ∙ R$ 25,00</button> 
+                                </>
+                            )
+                            : (
+                                <button type="button">Editar prato</button> 
+                            )
+                        }
                         </DashFooter>
                     </DashDetails>
                 </Dish>
