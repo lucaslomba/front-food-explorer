@@ -30,7 +30,7 @@ export function Header({ onOpenMenu }){
 
             {
                 user.role === "admin" ?
-                <ButtonCart>Novo prato</ButtonCart>
+                <ButtonCart to="/new">Novo prato</ButtonCart>
                 :
                 <ButtonCart type="button"><PiReceipt /> Pedidos (0)</ButtonCart>
             }
