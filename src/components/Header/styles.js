@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints'
+import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
     width: 100vw;
@@ -27,7 +28,7 @@ export const Container = styled.div`
     }
 `
 
-export const ButtonCart = styled.button`
+export const ButtonCart = styled(Link)`
     border: none;
     display: flex;
     white-space: nowrap;
