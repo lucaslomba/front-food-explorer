@@ -37,3 +37,36 @@ export const Content = styled.div`
         }
     }
 `
+
+export const Form = styled.form`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    gap: 2rem;
+
+    @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+        display: grid;
+        grid-template-rows: auto; 
+        grid-template-columns: repeat(12, 1fr);
+
+        :nth-child(1){
+            grid-column: span 3;
+        }
+        :nth-child(2){
+            grid-column: span 5;
+        }
+        :nth-child(3){
+            grid-column: span 4;
+        }
+        :nth-child(4){
+            grid-column: span 7;
+        }
+        :nth-child(5){
+            grid-column: span 5;
+        }
+        :nth-child(6) {
+            grid-column: span 12;
+        }
+    }
+`
