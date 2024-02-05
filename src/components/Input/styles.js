@@ -18,8 +18,8 @@ export const Container = styled.div`
         padding: 0.75rem 0.87rem;
         border-radius: 5px;
 
-        border: 1px solid ${({ theme }) => theme.COLORS.LIGHT100};
-        background-color: transparent;
+        border: none;
+        background-color: ${({ theme }) => theme.COLORS.DARK900};
 
         color: ${({ theme }) => theme.COLORS.LIGHT100};
 
