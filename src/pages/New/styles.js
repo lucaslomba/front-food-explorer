@@ -60,13 +60,69 @@ export const Form = styled.form`
             grid-column: span 4;
         }
         :nth-child(4){
-            grid-column: span 7;
+            grid-column: span 8;
         }
         :nth-child(5){
-            grid-column: span 5;
+            grid-column: span 4;
         }
         :nth-child(6) {
             grid-column: span 12;
         }
+    }
+`
+
+export const SelectContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    gap: .5rem;
+
+    > label {
+        color: ${({ theme }) => theme.COLORS.LIGHT400};
+        font-size: 1rem;
+
+        font-family: 'Roboto', sans-serif;
+    }
+
+    > select {
+        padding: 1rem 0.87rem;
+        border-radius: 5px;
+
+        border: none;
+        background-color: ${({ theme }) => theme.COLORS.DARK900};
+
+        color: ${({ theme }) => theme.COLORS.LIGHT100};
+
+        &:placeholder {
+            color: ${({ theme }) => theme.COLORS.LIGHT500};
+        }
+    }
+`
+
+export const IngredientsList = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    gap: .5rem;
+
+    > label {
+        color: ${({ theme }) => theme.COLORS.LIGHT400};
+        font-size: 1rem;
+
+        font-family: 'Roboto', sans-serif;
+    }
+
+    > .tags {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0.4rem;
+
+        gap: 1rem;
+
+        border-radius: 5px;
+
+        background-color: ${({ theme }) => theme.COLORS.DARK900};
     }
 `
