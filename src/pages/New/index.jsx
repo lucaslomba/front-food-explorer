@@ -7,6 +7,7 @@ import { Container, Content, Form, SelectContainer, IngredientsList } from "./st
 import { Input } from "../../components/Input";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
+import { Button } from "../../components/Button";
 import { Section } from "../../components/Section";
 import { SideMenu } from "../../components/SideMenu";
 import { Textarea } from "../../components/Textarea";
@@ -77,6 +78,10 @@ export function New(){
                         <Input label="Preço" type="text" placeholder="R$ 00,00"/>
                         
                         <Textarea label="Descrição" placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"/>
+                        
+                        <div>
+                            <Button title="Salvar alterações" disabled/>
+                        </div>
                     </Form>
                 </Section>
             </Content>

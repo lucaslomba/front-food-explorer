@@ -68,6 +68,16 @@ export const Form = styled.form`
         :nth-child(6) {
             grid-column: span 12;
         }
+        :nth-child(7) {
+            grid-column: span 12;
+
+            display: flex;
+            justify-content: end;
+
+            > button {
+                max-width: 15rem;
+            }
+        }
     }
 `
 
