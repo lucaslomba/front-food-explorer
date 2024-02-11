@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { api } from '../services/api';
 
 export const AuthContext = createContext({});
 
@@ -23,7 +24,25 @@ function AuthProvider({ children }){
     }
 
     function createAccount({name, email, password}){
-        return true
+        if(!name || !email || !password){
+            alert("Preencha todos os campos!")
+            return
+        }
+
+        api.post("/users", { name, email, password })
+        .then(() => {
+            alert("Usuário cadastrado com sucesso!")
+            return true
+        })
+        .catch(error => {
+            if(error.response){
+                alert(error.response.data.message)
+                return false
+            }else{
+                alert("Não foi possivel cadastrar!")
+                return false
+            }
+        })
     }
 
     useEffect(() => {
