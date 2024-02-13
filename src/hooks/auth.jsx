@@ -7,15 +7,25 @@ export const AuthContext = createContext({});
 function AuthProvider({ children }){
     const [data, setData] = useState({})
 
-    function signIn({email, password}){
-        const user = {
-            email,
-            password,
-            role: 'customer'
+    async function signIn({email, password}){
+        try {
+            const response = await api.post("/sessions", { email, password })
+            const { user, token } = response.data
+    
+            localStorage.setItem("@foodexplorer:user", JSON.stringify(user))
+            localStorage.setItem("@foodexplorer:token", token)
+
+            api.defaults.headers.authorization = `Bearer ${token}`
+
+            setData(user)
+        } catch (error) {
+            if(error.response){
+                alert(error.response.data.message)
+            }else{
+                alert("Não foi possível entrar!")
+            }
         }
 
-        localStorage.setItem("@foodexplorer:user", JSON.stringify(user))
-        setData(user)
     }
 
     function signOut(){
