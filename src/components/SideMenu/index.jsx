@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
 import { Footer } from "../Footer";
 
@@ -6,7 +7,13 @@ import { Container, Nav, Header, Button, InputSearch } from "./styles";
 import { FiX, FiSearch } from 'react-icons/fi'
 
 export function SideMenu({ menuIsOpen, onCloseMenu }) {
+    const navigate = useNavigate()
     const { signOut, user } = useAuth()
+
+
+    function handleCreateDish(){
+        navigate("/new")
+    }
 
     return (
         <Container data-menu-is-open={menuIsOpen}>
@@ -28,7 +35,7 @@ export function SideMenu({ menuIsOpen, onCloseMenu }) {
 
                 {
                 user.role === "admin" && 
-                    <button type="button" onClick={signOut}>
+                    <button type="button" onClick={handleCreateDish}>
                         Novo prato
                     </button >    
                 }
