@@ -7,15 +7,21 @@ import { CustomerRoutes } from './customer.routes'
 
 export function Routes(){
     const { user } = useAuth()
+
+    console.log(user)
     
     function AccessRoute(){
-        switch (user.role) {
-            case 'admin':
-                return <AdminRoutes/>
-            case 'customer':
-                return <CustomerRoutes />
-            default:
-                return <AuthRoutes/>          
+        if(user){
+            switch (user.role) {
+                case 'admin':
+                    return <AdminRoutes/>
+                case 'customer':
+                    return <CustomerRoutes />
+                default:
+                    return <AuthRoutes/>          
+            }
+        }else{
+            return <AuthRoutes/>        
         }
     }
 
