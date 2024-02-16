@@ -13,8 +13,14 @@ import { SideMenu } from "../../components/SideMenu";
 import { Textarea } from "../../components/Textarea";
 import { InputFile } from "../../components/InputFile";
 import { IngredientsTag } from "../../components/IngredientsTag";
+import { api } from "../../services/api";
 
 export function New(){
+    const [name, setName] = useState("")
+    const [category, setCategory] = useState("")
+    const [price, setPrice] = useState("")
+    const [description, setDescription] = useState("")
+
     const [menuIsOpen, setMenuIsOpen] = useState(false);
     const [ingredients, setIngredients] = useState([])
     const [newIngredient, setNewIngredient] = useState("")
@@ -26,6 +32,32 @@ export function New(){
 
     function handleRemoveIngredient(deleted){
         setIngredients(prevState => prevState.filter(tag => tag !== deleted))
+    }
+
+    async function handleCreateDish(){
+        if(!name){
+            return alert("Digite o nome do prato!")
+        }
+
+        if(!category){
+            return alert("Selecione uma categoria!")
+        }
+
+        if(!price){
+            return alert("Digite o valor do prato!")
+        }
+
+        if(!description){
+            return alert("Digite a descrição do prato!")
+        }
+
+        await api.post("/dishs", {
+            name,
+            category,
+            price,
+            description,
+            ingredients
+        })
     }
 
     return (
@@ -42,14 +74,21 @@ export function New(){
                 <Section title="Adicionar prato">
                     <Form>
                         <InputFile label="Imagem do prato" id="dish"/>
-                        <Input label="Nome" type="text" placeholder="Ex.: Salada Ceasar"/>
+                        <Input 
+                            label="Nome" 
+                            type="text" 
+                            placeholder="Ex.: Salada Ceasar"
+                            value={name}
+                            onChange={e => setName(e.target.value)}
+                        />
 
                         <SelectContainer>
                             <label htmlFor="">Categoria</label>
-                            <select>
-                                <option value="">Refeições</option>
-                                <option value="">Sobremesas</option>
-                                <option value="">Bebidas</option>
+                            <select onChange={e => setCategory(e.target.value)}>
+                                <option value="">Selecione...</option>
+                                <option value="meal">Refeições</option>
+                                <option value="dessert">Sobremesas</option>
+                                <option value="drink">Bebidas</option>
                             </select>
                         </SelectContainer>
 
@@ -75,12 +114,22 @@ export function New(){
                                 />
                             </div>
                         </IngredientsList>
-                        <Input label="Preço" type="text" placeholder="R$ 00,00"/>
+                        <Input 
+                            label="Preço" 
+                            value={price}
+                            type="text" 
+                            placeholder="R$ 00,00" 
+                            onChange={e => setPrice(e.target.value)}
+                        />
                         
-                        <Textarea label="Descrição" placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"/>
+                        <Textarea 
+                            label="Descrição" 
+                            placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
+                            onChange={e => setDescription(e.target.value)}
+                        />
                         
                         <div>
-                            <Button title="Salvar alterações" disabled/>
+                            <Button title="Salvar alterações" onClick={handleCreateDish}/>
                         </div>
                     </Form>
                 </Section>
