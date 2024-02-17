@@ -20,6 +20,7 @@ export function New(){
     const [category, setCategory] = useState("")
     const [price, setPrice] = useState("")
     const [description, setDescription] = useState("")
+    const [dishFile, setDishFile] = useState(null)
 
     const [menuIsOpen, setMenuIsOpen] = useState(false);
     const [ingredients, setIngredients] = useState([])
@@ -34,7 +35,16 @@ export function New(){
         setIngredients(prevState => prevState.filter(tag => tag !== deleted))
     }
 
+    function handleSelectFile(event){
+        const file = event.target.files[0]
+        setDishFile(file)
+    }
+
     async function handleCreateDish(){
+        if(!dishFile){
+            return alert("Selecione uma foto!")
+        }
+
         if(!name){
             return alert("Digite o nome do prato!")
         }
@@ -56,7 +66,8 @@ export function New(){
             category,
             price,
             description,
-            ingredients
+            ingredients,
+            dishFile
         })
     }
 
@@ -73,7 +84,7 @@ export function New(){
 
                 <Section title="Adicionar prato">
                     <Form>
-                        <InputFile label="Imagem do prato" id="dish"/>
+                        <InputFile label="Imagem do prato" id="dish" onChange={handleSelectFile}/>
                         <Input 
                             label="Nome" 
                             type="text" 
