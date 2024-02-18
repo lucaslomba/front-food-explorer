@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { api } from "../../services/api";
+import { Link, useNavigate } from "react-router-dom";
 
 import { PiCaretLeft } from "react-icons/pi";
 import { Container, Content, Form, SelectContainer, IngredientsList } from "./styles";
@@ -13,7 +14,6 @@ import { SideMenu } from "../../components/SideMenu";
 import { Textarea } from "../../components/Textarea";
 import { InputFile } from "../../components/InputFile";
 import { IngredientsTag } from "../../components/IngredientsTag";
-import { api } from "../../services/api";
 
 export function New(){
     const [name, setName] = useState("")
@@ -25,6 +25,8 @@ export function New(){
     const [menuIsOpen, setMenuIsOpen] = useState(false);
     const [ingredients, setIngredients] = useState([])
     const [newIngredient, setNewIngredient] = useState("")
+
+    const navigate = useNavigate()
 
     function handleAddIngredient(){
         setIngredients(prevState => [...prevState, newIngredient])
@@ -70,6 +72,9 @@ export function New(){
         fileUploadForm.append("ingredients", ingredients)
 
         await api.post("/dishs", fileUploadForm)
+
+        alert("Prato cadastrado com sucesso!")
+        navigate(-1)
     }
 
     return (
