@@ -7,8 +7,6 @@ import { CustomerRoutes } from './customer.routes'
 
 export function Routes(){
     const { user } = useAuth()
-
-    console.log(user)
     
     function AccessRoute(){
         if(user){
