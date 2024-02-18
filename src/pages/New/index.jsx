@@ -61,14 +61,15 @@ export function New(){
             return alert("Digite a descrição do prato!")
         }
 
-        await api.post("/dishs", {
-            name,
-            category,
-            price,
-            description,
-            ingredients,
-            dishFile
-        })
+        const fileUploadForm = new FormData()
+        fileUploadForm.append("dishFile", dishFile)
+        fileUploadForm.append("name", name)
+        fileUploadForm.append("category", category)
+        fileUploadForm.append("price", price)
+        fileUploadForm.append("description", description)
+        fileUploadForm.append("ingredients", ingredients)
+
+        await api.post("/dishs", fileUploadForm)
     }
 
     return (
