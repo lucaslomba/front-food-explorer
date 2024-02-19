@@ -10,7 +10,7 @@ import {Button } from "../Button"
 
 import Image from "../../assets/camarao.png"
 
-export function Card({id, name, description, price, ...rest}){
+export function Card({details, ...rest}){
     const navigate = useNavigate()
 
     const { user } = useAuth()
@@ -29,36 +29,38 @@ export function Card({id, name, description, price, ...rest}){
     }
 
     function handleToDetails(){
-        navigate("/details/" + id)
+        navigate("/details/" + details.id)
     }
 
     return (
         <Container {...rest}>
             {
-                user.role === "admin" ?
-                <PiPencilSimple />
-                :
-                <FiHeart />
+                details &&
+                    user.role === "admin" ?
+                    <PiPencilSimple />
+                    :
+                    <FiHeart />
             }
-            <img src={Image} alt="" />
+                <img src={Image} alt="" />
 
-            <LinkTitle onClick={handleToDetails}>{name} &nbsp;&nbsp;&gt;</LinkTitle>
-            <span>{description}</span>
+                <LinkTitle onClick={handleToDetails}>{details.name} &nbsp;&nbsp;&gt;</LinkTitle>
+                <span>{details.description}</span>
 
-            <h2>{price}</h2>
+                <h2>{details.price}</h2>
 
-            {
-                user.role === "customer" ? (
-                    <Footer>
-                        <div>
-                            <FiMinus onClick={handleRemoveItem}/>
-                            <span>0{amount}</span>
-                            <FiPlus onClick={handleAddItem}/>
-                        </div>
-                        <Button title="incluir"/>
-                    </Footer>
-                ) : null
-            }
+                {
+                    user.role === "customer" ? (
+                        <Footer>
+                            <div>
+                                <FiMinus onClick={handleRemoveItem}/>
+                                <span>0{amount}</span>
+                                <FiPlus onClick={handleAddItem}/>
+                            </div>
+                            <Button title="incluir"/>
+                        </Footer>
+                    ) : null
+                }
+            
         </Container>
     )
 }

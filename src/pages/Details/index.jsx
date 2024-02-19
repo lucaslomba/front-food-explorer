@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 import Image from "../../assets/camarao.png"
 import { PiCaretLeft } from "react-icons/pi";
@@ -12,7 +13,10 @@ import { Footer } from "../../components/Footer";
 import { SideMenu } from "../../components/SideMenu";
 
 export function Details(){
+    const params = useParams()
+
     const { user } = useAuth()
+    const [data, setData] = useState(null)
     const [menuIsOpen, setMenuIsOpen] = useState(false);
 
     const [amount, setAmount] = useState(1)
@@ -29,6 +33,16 @@ export function Details(){
         }
     }
 
+    useEffect(() => {
+        async function fetchDetails(){
+          const response = await api.get(`/dishs/${params.id}`)
+          console.log(response)
+          setData(response.data)
+        }
+    
+        fetchDetails()
+      }, [])
+
     return (
         <Container>
             <Header onOpenMenu={() => setMenuIsOpen(true)}/>
@@ -37,44 +51,45 @@ export function Details(){
                 onCloseMenu={() => setMenuIsOpen(false)}
             />
 
-            <Content>
-                <Link to={-1}><PiCaretLeft /> voltar</Link>
+            {
+                data &&
+                    <Content>
+                        <Link to={-1}><PiCaretLeft /> voltar</Link>
 
-                <Dish>
-                    <img src={Image} alt="" />
-                    
-                    <DishDetails>
-                        <h2>Spaguetti Gambe</h2>
-                        <span>Massa fresca com camarões e pesto.</span>
+                        <Dish>
+                            <img src={Image} alt="" />
+                            
+                            <DishDetails>
+                                <h2>{data.name}</h2>
+                                <span>{data.description}</span>
 
-                        <DishIngredients>
-                            <span>Camarão</span>
-                            <span>Macarrão</span>
-                            <span>Molho pesto</span>
-                            <span>Manjericão</span>
-                        </DishIngredients>
+                                <DishIngredients>
+                                    {data.ingredients.map((ingredient, index) => (
+                                        <span key={String(index)}>{ingredient.name}</span>
+                                    ))}
+                                </DishIngredients>
 
-                        <DishFooter>
-                        {
-                            user.role === "customer" ? (
-                                <>
-                                    <div>
-                                        <FiMinus onClick={handleRemoveItem}/>
-                                        <span>0{amount}</span>
-                                        <FiPlus onClick={handleAddItem}/>
-                                    </div>
-                                    <button type="button">incluir ∙ R$ 25,00</button> 
-                                </>
-                            )
-                            : (
-                                <button type="button">Editar prato</button> 
-                            )
-                        }
-                        </DishFooter>
-                    </DishDetails>
-                </Dish>
-            </Content>
-
+                                <DishFooter>
+                                {
+                                    user.role === "customer" ? (
+                                        <>
+                                            <div>
+                                                <FiMinus onClick={handleRemoveItem}/>
+                                                <span>0{amount}</span>
+                                                <FiPlus onClick={handleAddItem}/>
+                                            </div>
+                                            <button type="button">incluir ∙ R$ {data.price}</button> 
+                                        </>
+                                    )
+                                    : (
+                                        <button type="button">Editar prato</button> 
+                                    )
+                                }
+                                </DishFooter>
+                            </DishDetails>
+                        </Dish>
+                    </Content>
+            }
             <Footer />
         </Container>
     )
