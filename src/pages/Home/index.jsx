@@ -26,12 +26,12 @@ export function Home(){
 
         async function fetchDessert(){
             const response = await api.get(`/dishs?type=dessert`)
-            setMeals(response.data)
+            setDesserts(response.data)
         }
 
         async function fetchDrink(){
             const response = await api.get(`/dishs?type=drink`)
-            setMeals(response.data)
+            setDrinks(response.data)
         }
 
         fetchMeal()
