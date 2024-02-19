@@ -46,6 +46,10 @@ export function New(){
     }
 
     async function handleCreateDish(){
+        if(newIngredient){
+            return alert("Você tem um ingrediente nao adicionado, deixe o campo vazio ou clique no +!")
+        }
+
         if(!dishFile){
             return alert("Selecione uma foto!")
         }
