@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
-import { Link } from "react-router-dom";
 
 export const Container = styled.div`
     background-color: ${({ theme }) => theme.COLORS.DARK200};
@@ -24,6 +23,8 @@ export const Container = styled.div`
         right: 1.1rem;
 
         font-size: 1.5rem;
+
+        cursor: pointer;
     }
     
     > img {

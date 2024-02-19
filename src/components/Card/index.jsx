@@ -32,12 +32,16 @@ export function Card({details, ...rest}){
         navigate("/details/" + details.id)
     }
 
+    function handleToEdit(){
+        navigate("/edit/" + details.id)
+    }
+
     return (
         <Container {...rest}>
             {
                 details &&
                     user.role === "admin" ?
-                    <PiPencilSimple />
+                    <PiPencilSimple onClick={handleToEdit}/>
                     :
                     <FiHeart />
             }

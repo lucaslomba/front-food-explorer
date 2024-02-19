@@ -1,7 +1,7 @@
 import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { PiCaretLeft } from "react-icons/pi";
 import { FiMinus, FiPlus } from "react-icons/fi";
@@ -13,6 +13,7 @@ import { SideMenu } from "../../components/SideMenu";
 
 export function Details(){
     const params = useParams()
+    const navigate = useNavigate()
 
     const { user } = useAuth()
     const [data, setData] = useState(null)
@@ -40,6 +41,10 @@ export function Details(){
 
         fetchDetails()
     }, [])
+
+    function handleToEdit(){
+        navigate("/edit/" + data.id)
+    } 
 
     return (
         <Container>
@@ -80,7 +85,7 @@ export function Details(){
                                         </>
                                     )
                                     : (
-                                        <button type="button">Editar prato</button> 
+                                        <button type="button" onClick={handleToEdit}>Editar prato</button> 
                                     )
                                 }
                                 </DishFooter>
