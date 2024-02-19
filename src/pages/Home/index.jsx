@@ -21,19 +21,16 @@ export function Home(){
     useEffect(() => {
         async function fetchMeal(){
             const response = await api.get(`/dishs?type=meal`)
-            console.log(response)
             setMeals(response.data)
         }
 
         async function fetchDessert(){
             const response = await api.get(`/dishs?type=dessert`)
-            console.log(response)
             setMeals(response.data)
         }
 
         async function fetchDrink(){
             const response = await api.get(`/dishs?type=drink`)
-            console.log(response)
             setMeals(response.data)
         }
 
