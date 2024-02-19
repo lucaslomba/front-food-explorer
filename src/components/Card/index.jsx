@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -8,13 +9,12 @@ import { PiPencilSimple } from "react-icons/pi";
 
 import {Button } from "../Button"
 
-import Image from "../../assets/camarao.png"
-
 export function Card({details, ...rest}){
+    const { user } = useAuth()
     const navigate = useNavigate()
 
-    const { user } = useAuth()
     const [amount, setAmount] = useState(1)
+    const avatarUrl = details.filename ? `${api.defaults.baseURL}/files/${details.filename}` : ''
 
     function handleAddItem(){
         if(amount < 9){
@@ -41,7 +41,7 @@ export function Card({details, ...rest}){
                     :
                     <FiHeart />
             }
-                <img src={Image} alt="" />
+                <img src={avatarUrl} alt="" />
 
                 <LinkTitle onClick={handleToDetails}>{details.name} &nbsp;&nbsp;&gt;</LinkTitle>
                 <span>{details.description}</span>

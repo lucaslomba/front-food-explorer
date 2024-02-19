@@ -44,6 +44,10 @@ export const Dish = styled.div`
 
     margin-top: 2.6rem;
 
+    > img {
+        max-width: 50%;
+    }
+
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
         flex-direction: column;
         margin-top: 1.33rem;

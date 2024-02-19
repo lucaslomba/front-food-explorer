@@ -3,7 +3,6 @@ import { useAuth } from "../../hooks/auth";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import Image from "../../assets/camarao.png"
 import { PiCaretLeft } from "react-icons/pi";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { Container, Content, Dish, DishDetails, DishIngredients, DishFooter } from "./styles";
@@ -35,13 +34,12 @@ export function Details(){
 
     useEffect(() => {
         async function fetchDetails(){
-          const response = await api.get(`/dishs/${params.id}`)
-          console.log(response)
-          setData(response.data)
+            const response = await api.get(`/dishs/${params.id}`)
+            setData(response.data)
         }
-    
+
         fetchDetails()
-      }, [])
+    }, [])
 
     return (
         <Container>
@@ -57,7 +55,7 @@ export function Details(){
                         <Link to={-1}><PiCaretLeft /> voltar</Link>
 
                         <Dish>
-                            <img src={Image} alt="" />
+                            <img src={`${api.defaults.baseURL}/files/${data.filename}`} alt="" />
                             
                             <DishDetails>
                                 <h2>{data.name}</h2>
