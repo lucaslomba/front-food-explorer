@@ -29,6 +29,9 @@ export function New(){
     const navigate = useNavigate()
 
     function handleAddIngredient(){
+        if(!newIngredient){
+            return alert("Campo deve estar preenchido")
+        }
         setIngredients(prevState => [...prevState, newIngredient])
         setNewIngredient("")
     }
