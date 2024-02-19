@@ -8,8 +8,8 @@ import { ButtonCart, Container, ButtonLogOut, InputSearch, Menu, ButtonCartMobil
 import FoodExplorerImg from "../../assets/logo.svg"
 import FoodExplorerAdminImg from "../../assets/logoAdmin.svg"
 
-export function Header({ onOpenMenu }){
-    const { signOut, user } = useAuth()
+export function Header({onOpenMenu }){
+    const { signOut, user, setSearch } = useAuth()
 
     return(
         <Container>
@@ -25,7 +25,7 @@ export function Header({ onOpenMenu }){
 
             <InputSearch>
                 <FiSearch />
-                <input type="text" placeholder="Busque por pratos ou ingredientes"/>
+                <input type="text" placeholder="Busque por pratos ou ingredientes" onChange={e => setSearch(e.target.value)}/>
             </InputSearch>
 
             {

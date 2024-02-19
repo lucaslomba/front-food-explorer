@@ -4,6 +4,8 @@ import { api } from '../services/api';
 export const AuthContext = createContext({});
 
 function AuthProvider({ children }){
+    const [search, setSearch] = useState("")
+
     const [data, setData] = useState({})
 
     async function signIn({email, password}){
@@ -69,7 +71,7 @@ function AuthProvider({ children }){
     }, [])
 
     return (
-        <AuthContext.Provider value={{ signIn, signOut, createAccount, user: data.user }}>
+        <AuthContext.Provider value={{ signIn, signOut, createAccount, setSearch, search, user: data.user }}>
             {children}
         </AuthContext.Provider>
     )

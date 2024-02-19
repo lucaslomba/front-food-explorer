@@ -1,4 +1,5 @@
 import { api } from "../../services/api";
+import { useAuth } from "../../hooks/auth";
 import { useEffect, useState } from "react";
 import { useKeenSlider } from 'keen-slider/react'
 
@@ -14,30 +15,32 @@ import { SideMenu } from "../../components/SideMenu"
 import Background from "../../assets/background.png"
 
 export function Home(){
+    const { search } = useAuth()
+
     const [meals, setMeals] = useState([])
     const [desserts, setDesserts] = useState([])
     const [drinks, setDrinks] = useState([])
 
     useEffect(() => {
         async function fetchMeal(){
-            const response = await api.get(`/dishs?type=meal`)
+            const response = await api.get(`/dishs?type=meal&search=${search}`)
             setMeals(response.data)
         }
 
         async function fetchDessert(){
-            const response = await api.get(`/dishs?type=dessert`)
+            const response = await api.get(`/dishs?type=dessert&search=${search}`)
             setDesserts(response.data)
         }
 
         async function fetchDrink(){
-            const response = await api.get(`/dishs?type=drink`)
+            const response = await api.get(`/dishs?type=drink&search=${search}`)
             setDrinks(response.data)
         }
 
         fetchMeal()
         fetchDessert()
         fetchDrink()
-    }, [])
+    }, [search])
 
     const [sliderRef] = useKeenSlider({
         breakpoints: {
@@ -55,7 +58,7 @@ export function Home(){
 
     return(
         <Container>
-            <Header onOpenMenu={() => setMenuIsOpen(true)}/>
+            <Header onOpenMenu={() => setMenuIsOpen(true)} />
             <SideMenu 
                 menuIsOpen={menuIsOpen}
                 onCloseMenu={() => setMenuIsOpen(false)}
