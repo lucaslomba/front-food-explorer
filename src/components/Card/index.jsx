@@ -9,7 +9,7 @@ import {Button } from "../Button"
 
 import Image from "../../assets/camarao.png"
 
-export function Card({...rest}){
+export function Card({name, description, price, ...rest}){
     const { user } = useAuth()
     const [amount, setAmount] = useState(1)
 
@@ -35,10 +35,10 @@ export function Card({...rest}){
             }
             <img src={Image} alt="" />
 
-            <LinkTitle to="/details/1">Spaguetti Gambe&nbsp;&nbsp;&gt;</LinkTitle>
-            <span>Massa fresca com camarões e pesto.</span>
+            <LinkTitle to="/details/1">{name} &nbsp;&nbsp;&gt;</LinkTitle>
+            <span>{description}</span>
 
-            <h2>R$ 79,97</h2>
+            <h2>{price}</h2>
 
             {
                 user.role === "customer" ? (

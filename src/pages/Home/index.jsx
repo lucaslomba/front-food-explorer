@@ -72,40 +72,49 @@ export function Home(){
 
                 <Section title="Refeições">
                     <div ref={sliderRef} className="keen-slider">
-                        <Card className="keen-slider__slide"/>
-                        <Card className="keen-slider__slide"/>
-                        <Card className="keen-slider__slide"/>
-                        <Card className="keen-slider__slide"/>
-                        <Card className="keen-slider__slide"/>
-                        <Card className="keen-slider__slide"/>
-                        <Card className="keen-slider__slide"/>
-                        <Card className="keen-slider__slide"/>
+                        {
+                            meals.map((meal, index) => (
+                                <Card 
+                                    key={String(index)} 
+                                    className="keen-slider__slide" 
+                                    name={meal.name} 
+                                    description={meal.description} 
+                                    price={meal.price}
+                                />
+                            ))
+                        }
                     </div>
                 </Section>
 
                 <Section title="Sobremesas">
                     <div ref={sliderRef} className="keen-slider">
-                        <Card className="keen-slider__slide"/>
-                        <Card className="keen-slider__slide"/>
-                        <Card className="keen-slider__slide"/>
-                        <Card className="keen-slider__slide"/>
-                        <Card className="keen-slider__slide"/>
-                        <Card className="keen-slider__slide"/>
-                        <Card className="keen-slider__slide"/>
-                        <Card className="keen-slider__slide"/>
+                        {
+                            desserts.map((dessert, index) => (
+                                <Card 
+                                    key={String(index)} 
+                                    className="keen-slider__slide" 
+                                    name={dessert.name} 
+                                    description={dessert.description} 
+                                    price={dessert.price}
+                                />
+                            ))
+                        }
                     </div>
                 </Section>
 
                 <Section title="Bebidas">
                     <div ref={sliderRef} className="keen-slider">
-                        <Card className="keen-slider__slide"/>
-                        <Card className="keen-slider__slide"/>
-                        <Card className="keen-slider__slide"/>
-                        <Card className="keen-slider__slide"/>
-                        <Card className="keen-slider__slide"/>
-                        <Card className="keen-slider__slide"/>
-                        <Card className="keen-slider__slide"/>
-                        <Card className="keen-slider__slide"/>
+                        {
+                            drinks.map((drink, index) => (
+                                <Card 
+                                    key={String(index)} 
+                                    className="keen-slider__slide" 
+                                    name={drink.name} 
+                                    description={drink.description} 
+                                    price={drink.price}
+                                />
+                            ))
+                        }
                     </div>
                 </Section>
             </Content>
