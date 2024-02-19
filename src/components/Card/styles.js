@@ -16,6 +16,8 @@ export const Container = styled.div`
 
     position: relative;
 
+    max-width: 30%;
+
     > svg {
         position: absolute;
         top: 1rem;
@@ -61,7 +63,10 @@ export const Container = styled.div`
     }
 `
 
-export const LinkTitle = styled(Link)`
+export const LinkTitle = styled.button`
+    background-color: transparent;
+    border: none;
+
     font-size: 1.5rem;
     font-weight: bold;
     color: ${({ theme }) => theme.COLORS.LIGHT300};

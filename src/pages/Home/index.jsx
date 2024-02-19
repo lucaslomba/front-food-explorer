@@ -76,6 +76,7 @@ export function Home(){
                             meals.map((meal, index) => (
                                 <Card 
                                     key={String(index)} 
+                                    id={meal.id}
                                     className="keen-slider__slide" 
                                     name={meal.name} 
                                     description={meal.description} 
@@ -92,6 +93,7 @@ export function Home(){
                             desserts.map((dessert, index) => (
                                 <Card 
                                     key={String(index)} 
+                                    id={dessert.id}
                                     className="keen-slider__slide" 
                                     name={dessert.name} 
                                     description={dessert.description} 
@@ -108,6 +110,7 @@ export function Home(){
                             drinks.map((drink, index) => (
                                 <Card 
                                     key={String(index)} 
+                                    id={drink.id}
                                     className="keen-slider__slide" 
                                     name={drink.name} 
                                     description={drink.description} 

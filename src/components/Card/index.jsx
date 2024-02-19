@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../../hooks/auth";
+import { useNavigate } from "react-router-dom";
 
 import { Container, Footer, LinkTitle } from "./styles";
 import { FiMinus, FiPlus, FiHeart } from "react-icons/fi";
@@ -9,7 +10,9 @@ import {Button } from "../Button"
 
 import Image from "../../assets/camarao.png"
 
-export function Card({name, description, price, ...rest}){
+export function Card({id, name, description, price, ...rest}){
+    const navigate = useNavigate()
+
     const { user } = useAuth()
     const [amount, setAmount] = useState(1)
 
@@ -25,6 +28,10 @@ export function Card({name, description, price, ...rest}){
         }
     }
 
+    function handleToDetails(){
+        navigate("/details/" + id)
+    }
+
     return (
         <Container {...rest}>
             {
@@ -35,7 +42,7 @@ export function Card({name, description, price, ...rest}){
             }
             <img src={Image} alt="" />
 
-            <LinkTitle to="/details/1">{name} &nbsp;&nbsp;&gt;</LinkTitle>
+            <LinkTitle onClick={handleToDetails}>{name} &nbsp;&nbsp;&gt;</LinkTitle>
             <span>{description}</span>
 
             <h2>{price}</h2>
