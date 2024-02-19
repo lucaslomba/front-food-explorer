@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { api } from "../../services/api";
+import { useEffect, useState } from "react";
 import { useKeenSlider } from 'keen-slider/react'
 
 import 'keen-slider/keen-slider.min.css'
@@ -13,6 +14,34 @@ import { SideMenu } from "../../components/SideMenu"
 import Background from "../../assets/background.png"
 
 export function Home(){
+    const [meals, setMeals] = useState([])
+    const [desserts, setDesserts] = useState([])
+    const [drinks, setDrinks] = useState([])
+
+    useEffect(() => {
+        async function fetchMeal(){
+            const response = await api.get(`/dishs?type=meal`)
+            console.log(response)
+            setMeals(response.data)
+        }
+
+        async function fetchDessert(){
+            const response = await api.get(`/dishs?type=dessert`)
+            console.log(response)
+            setMeals(response.data)
+        }
+
+        async function fetchDrink(){
+            const response = await api.get(`/dishs?type=drink`)
+            console.log(response)
+            setMeals(response.data)
+        }
+
+        fetchMeal()
+        fetchDessert()
+        fetchDrink()
+    }, [])
+
     const [sliderRef] = useKeenSlider({
         breakpoints: {
             "(min-width: 400px)": {
