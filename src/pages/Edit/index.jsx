@@ -75,10 +75,6 @@ export function Edit(){
             return alert("Você tem um ingrediente nao adicionado, deixe o campo vazio ou clique no +!")
         }
 
-        if(!dishFile){
-            return alert("Selecione uma foto!")
-        }
-
         if(!name){
             return alert("Digite o nome do prato!")
         }
@@ -96,6 +92,7 @@ export function Edit(){
         }
 
         const fileUploadForm = new FormData()
+        console.log(dishFile)
         fileUploadForm.append("dishFile", dishFile)
         fileUploadForm.append("name", name)
         fileUploadForm.append("category", category)
@@ -103,9 +100,9 @@ export function Edit(){
         fileUploadForm.append("description", description)
         fileUploadForm.append("ingredients", ingredients)
 
-        await api.post("/dishs", fileUploadForm)
+        await api.patch("/dishs/" + params.id, fileUploadForm)
 
-        alert("Prato cadastrado com sucesso!")
+        alert("Prato editado com sucesso!")
         navigate(-1)
     }
 
