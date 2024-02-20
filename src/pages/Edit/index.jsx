@@ -70,7 +70,14 @@ export function Edit(){
         setDishFile(file)
     }
 
-    async function handleCreateDish(){
+    async function handleDeleteDish(){
+        await api.delete("/dishs/" + params.id)
+
+        alert("Prato deletado com sucesso!")
+        navigate(-1)
+    }
+
+    async function handleUpdateDish(){
         if(newIngredient){
             return alert("Você tem um ingrediente nao adicionado, deixe o campo vazio ou clique no +!")
         }
@@ -176,7 +183,8 @@ export function Edit(){
                         />
                         
                         <div>
-                            <Button title="Salvar alterações" onClick={handleCreateDish}/>
+                            <button className="delete" onClick={handleDeleteDish}>Excluir prato</button>
+                            <Button title="Salvar alterações" onClick={handleUpdateDish}/>
                         </div>
                     </Form>
                 </Section>

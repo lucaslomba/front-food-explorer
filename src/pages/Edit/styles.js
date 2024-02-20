@@ -45,6 +45,25 @@ export const Form = styled.form`
 
     gap: 2rem;
 
+    > div > button.delete {
+        width: 100%;
+        background-color: ${({ theme }) => theme.COLORS.DARK800};
+        color: ${({ theme }) => theme.COLORS.LIGHT100};
+
+        height: 3rem;
+        border: 0;
+        padding: 0 1rem;
+        margin-top: 1rem;
+        margin-right: 2rem;
+        border-radius: .62rem;
+
+        font-weight: 500;
+
+        &:hover {
+            background-color: ${({ theme }) => theme.COLORS.TOMATO900};
+        }
+    }
+
     @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
         display: grid;
         grid-template-rows: auto; 
