@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { api } from "../../services/api";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { PiCaretLeft } from "react-icons/pi";
 import { Container, Content, Form, SelectContainer, IngredientsList } from "./styles";
@@ -16,15 +16,40 @@ import { InputFile } from "../../components/InputFile";
 import { IngredientsTag } from "../../components/IngredientsTag";
 
 export function Edit(){
+    const params = useParams()
+    const [data, setData] = useState(null)
+    
     const [name, setName] = useState("")
-    const [category, setCategory] = useState("")
     const [price, setPrice] = useState("")
+    const [category, setCategory] = useState("")
     const [description, setDescription] = useState("")
     const [dishFile, setDishFile] = useState(null)
-
+    
     const [menuIsOpen, setMenuIsOpen] = useState(false);
     const [ingredients, setIngredients] = useState([])
     const [newIngredient, setNewIngredient] = useState("")
+
+    useEffect(() => {
+
+        async function fetchDetails(){
+            const response = await api.get(`/dishs/${params.id}`)
+            setData(response.data)
+            setName(response.data.name)
+            setPrice(response.data.price)
+            setCategory(response.data.category)
+            setDescription(response.data.description)
+
+            let ingredients = response.data.ingredients.map((ingredient) => {
+                return ingredient.name
+            })
+
+
+            setIngredients(ingredients)
+        }
+
+        fetchDetails()
+    }, [])
+
 
     const navigate = useNavigate()
 
@@ -98,6 +123,7 @@ export function Edit(){
                 <Section title="Adicionar prato">
                     <Form>
                         <InputFile label="Imagem do prato" id="dish" onChange={handleSelectFile}/>
+                        
                         <Input 
                             label="Nome" 
                             type="text" 
@@ -108,7 +134,7 @@ export function Edit(){
 
                         <SelectContainer>
                             <label htmlFor="">Categoria</label>
-                            <select onChange={e => setCategory(e.target.value)}>
+                            <select value={category} onChange={e => setCategory(e.target.value)}>
                                 <option value="">Selecione...</option>
                                 <option value="meal">Refeições</option>
                                 <option value="dessert">Sobremesas</option>
@@ -149,6 +175,7 @@ export function Edit(){
                         <Textarea 
                             label="Descrição" 
                             placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
+                            value={description}
                             onChange={e => setDescription(e.target.value)}
                         />
                         
