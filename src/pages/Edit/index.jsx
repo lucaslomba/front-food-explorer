@@ -92,7 +92,6 @@ export function Edit(){
         }
 
         const fileUploadForm = new FormData()
-        console.log(dishFile)
         fileUploadForm.append("dishFile", dishFile)
         fileUploadForm.append("name", name)
         fileUploadForm.append("category", category)
