@@ -40,3 +40,6 @@ O Food Explorer é um Web App que simula um menu interativo de um restaurante fi
   npm run dev
 ```
 
+## 🔗 Deploy
+
+[Acessar food explorer](https://65d603dea53d28b33f78c437--iridescent-torrone-233034.netlify.app/)
